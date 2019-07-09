@@ -1,0 +1,26 @@
+[
+    {
+        "id": "column-1",
+        "name": "To fix"
+    },
+    {
+        "id": "column-2",
+        "name": "To do"
+    },
+    {
+        "id": "column-3",
+        "name": "Question"
+    },
+    {
+        "id": "column-4",
+        "name": "In progress"
+    },
+    {
+        "id": "column-5",
+        "name": "Evaluation"
+    },
+    {
+        "id": "column-6",
+        "name": "Done"
+    }
+]
