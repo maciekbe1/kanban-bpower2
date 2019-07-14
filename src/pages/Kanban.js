@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { getToken } from "../components/api";
-import sha256 from "js-sha256";
+// import sha256 from "js-sha256";
 import axios from "axios";
 import Context from "../context";
 import Column from "../components/Kanban/Column";
@@ -8,14 +8,14 @@ import styled from "styled-components";
 
 export default function Kanban() {
     const context = useContext(Context);
-    const login = "maciej.bednarczyk";
-    const password = sha256("12345");
+    const login = process.env.REACT_APP_LOGIN;
+    const password = process.env.REACT_APP_PASSWORD;
     const userdata = btoa(`${login}:${password}`);
     const columns = context.state.columns;
     const [tasks, setTasks] = useState([]);
     const Container = styled.div`
         padding-top: 40px;
-        margin-left: ${context.state.sitebar ? "360px" : "130px"};
+        margin-left: ${context.state.sitebar ? "360px" : "330px"};
     `;
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export default function Kanban() {
             });
         });
     }, [userdata]);
-
+    // console.log(tasks);
     return (
         <Container>
             <h4>

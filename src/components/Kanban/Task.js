@@ -1,14 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
+import { colors } from "../../containers/colors";
 export default function Task(props) {
-    const colors = {
-        Low: "#2ecc71",
-        Medium: "#3498db",
-        Common: "#95a5a6",
-        Important: "#e74c3c"
-    };
-    console.log(props.task);
     const getColor = Object.keys(colors).map(item => {
         if (item === props.task.priority.name) {
             return colors[props.task.priority.name];
@@ -36,7 +30,9 @@ export default function Task(props) {
     `;
     return (
         <Container>
-            <Title>{props.task.name}</Title>
+            <Title>
+                <Link to={`/kanban/${props.task.id}`}>{props.task.name}</Link>
+            </Title>
             <Paragraph>{props.task.priority.name}</Paragraph>
             <Paragraph>
                 {props.task.user_id_createdby.f_name +
