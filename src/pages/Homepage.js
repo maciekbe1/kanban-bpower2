@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Assigned from "../components/Homepage/Assigned";
+// import Search from "../components/Homepage/Search";
 import styled from "styled-components";
 import Context from "../context";
 import "../assets/styles/Homepage.scss";
@@ -13,6 +14,7 @@ export default function Homepage() {
     return (
         <Container>
             <Assigned />
+            {/* <Search /> */}
         </Container>
     );
 }

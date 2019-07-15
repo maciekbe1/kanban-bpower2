@@ -5,7 +5,8 @@ import axios from "axios";
 import styled from "styled-components";
 import Context from "../context";
 import { dateConverter } from "../containers/date";
-// import parse from "html-react-parser"; .replace(/<(.|\n)*?>/g, "")
+// import parse from "html-react-parser";
+//.replace(/<(.|\n)*?>/g, "")
 import Markdown from "markdown-to-jsx";
 
 export default function TaskView(props) {
@@ -24,11 +25,13 @@ export default function TaskView(props) {
             // const token = res.data.token.split(".");
             axios({
                 method: "get",
-                url: `https://b2ng.bpower2.com/restApi/tasks?parameters={"searchBy":{"id":${id}}}`,
+                url: `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/
+                {"projectId":"default","searchBy":{"id":${id}}}`,
                 headers: {
                     Authorization: res.data.token
                 }
             }).then(res => {
+                // console.log(res);
                 res.data.map(task => {
                     setTask(task);
                     return null;
@@ -63,6 +66,9 @@ export default function TaskView(props) {
                     </p>
                     <h1>{task.name}</h1>
                     <Description>
+                        {/* <iframe >
+                            {task.description ? task.description : null}
+                        </iframe> */}
                         {task.description ? (
                             <Markdown options={{ overrides: { "<o:p>": "p" } }}>
                                 {task.description}
@@ -76,7 +82,11 @@ export default function TaskView(props) {
                             STATUS:
                         </Paragraph>
                         <Status className="d-inline-block bg-secondary">
-                            {task.status ? task.status.name : null}
+                            {task.status
+                                ? task.status.name === ""
+                                    ? "No status"
+                                    : task.status.name
+                                : null}
                         </Status>
                     </div>
 
@@ -94,28 +104,56 @@ export default function TaskView(props) {
                     </div>
                     <div className="mb-4">
                         <Paragraph className="text-secondary">
-                            CREATED AT
+                            PERFORMER
                         </Paragraph>
-                        <p>{dateConverter(task.start_date)}</p>
+                        {task.performer
+                            ? task.performer.f_name +
+                              " " +
+                              task.performer.l_name
+                            : null}
                     </div>
-                    <div className="mb-4">
-                        <Paragraph className="text-secondary">
-                            UPDATED AT
-                        </Paragraph>
-                        <p>{dateConverter(task.ssr_updated)}</p>
-                    </div>
-                    <div className="mb-4">
-                        <Paragraph className="text-secondary">
-                            ESTIMATION
-                        </Paragraph>
-                        <p>{task.working_time_estimation}</p>
-                    </div>
-                    <div className="mb-4">
-                        <Paragraph className="text-secondary">
-                            TIME CONSUMING
-                        </Paragraph>
-                        <p>{task.time_consuming}</p>
-                    </div>
+                    {task.start_date !== "0000-00-00 00:00:00" &&
+                    task.start_date !== "" &&
+                    task.start_date !== null ? (
+                        <div className="mb-4">
+                            <Paragraph className="text-secondary">
+                                START DATE
+                            </Paragraph>
+                            <p>{dateConverter(task.start_date)}</p>
+                        </div>
+                    ) : null}
+                    {task.due_date ? (
+                        <div className="mb-4">
+                            <Paragraph className="text-secondary">
+                                DUE DATE
+                            </Paragraph>
+                            <p>{dateConverter(task.due_date)}</p>
+                        </div>
+                    ) : null}
+                    {task.ssr_updated ? (
+                        <div className="mb-4">
+                            <Paragraph className="text-secondary">
+                                UPDATED AT
+                            </Paragraph>
+                            <p>{dateConverter(task.ssr_updated)}</p>
+                        </div>
+                    ) : null}
+                    {task.working_time_estimation ? (
+                        <div className="mb-4">
+                            <Paragraph className="text-secondary">
+                                ESTIMATION
+                            </Paragraph>
+                            <p>{task.working_time_estimation}</p>
+                        </div>
+                    ) : null}
+                    {task.time_consuming ? (
+                        <div className="mb-4">
+                            <Paragraph className="text-secondary">
+                                TIME CONSUMING
+                            </Paragraph>
+                            <p>{task.time_consuming}</p>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </Container>

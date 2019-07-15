@@ -9,6 +9,7 @@ import TaskView from "./pages/TaskView";
 
 // import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+// import Footer from "./components/Footer";
 function App() {
     const initialState = useContext(Context);
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/kanban/:id" component={TaskView} />
                     <Route path="/kanban" component={Kanban} />
                 </Switch>
+                {/* <Footer /> */}
             </BrowserRouter>
         </Context.Provider>
     );

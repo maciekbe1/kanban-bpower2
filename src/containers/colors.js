@@ -1,6 +1,7 @@
 export const colors = {
-    Low: "#2ecc71",
-    Medium: "#3498db",
     Common: "#95a5a6",
-    Important: "#e74c3c"
+    Low: "#f1c40f",
+    Medium: "#3498db",
+    Important: "#e67e22",
+    High: "#e74c3c"
 };
