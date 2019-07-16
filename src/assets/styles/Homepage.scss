@@ -1,11 +1,19 @@
+@import "./Global.scss";
 .assigned {
     .list-group .active {
         background: #e6e6e6;
-        color: #b82324;
+        color: $redBpower;
         border: 1px solid rgba(0, 0, 0, 0.125);
     }
     .line-through {
         text-decoration: line-through;
         color: #ccc;
+    }
+    .nav-pills .nav-link.active {
+        background: $greyBpower;
+        color: #fff;
+    }
+    .nav-pills .nav-link {
+        color: $redBpower;
     }
 }

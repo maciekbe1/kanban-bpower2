@@ -1,0 +1,32 @@
+$greyBpower: #526465;
+$redBpower: #b82324;
+@media (max-width: 1290px) and (min-width: 1200px) {
+    .container-fluid {
+        width: unset;
+        margin-left: 130px;
+    }
+}
+@media (max-width: 1190px) and (min-width: 992px) {
+    .container-fluid {
+        width: unset;
+        margin-left: 130px;
+    }
+}
+@media (max-width: 850px) and (min-width: 768px) {
+    .container-fluid {
+        width: unset;
+        margin-left: 130px;
+    }
+}
+@media (min-width: 576px) {
+    .container-fluid {
+        width: unset;
+        margin-left: 130px;
+    }
+}
+@media (max-width: 575px) {
+    .container-fluid {
+        width: unset;
+        margin-left: 95px;
+    }
+}

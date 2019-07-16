@@ -1,20 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import Assigned from "../components/Homepage/Assigned";
 // import Search from "../components/Homepage/Search";
-import styled from "styled-components";
-import Context from "../context";
+// import styled from "styled-components";
 import "../assets/styles/Homepage.scss";
 export default function Homepage() {
-    const context = useContext(Context);
-    const Container = styled.div`
-        padding-top: 40px;
-        margin-left: ${context.state.sitebar ? "360px" : "330px"};
-    `;
+    // const Container = styled.div`
+    //     padding-top: 40px;
+    // `;
 
     return (
-        <Container>
+        <div className="container-fluid">
             <Assigned />
             {/* <Search /> */}
-        </Container>
+        </div>
     );
 }

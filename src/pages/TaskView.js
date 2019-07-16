@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getToken } from "../components/api";
 // import sha256 from "js-sha256";
 import axios from "axios";
 import styled from "styled-components";
-import Context from "../context";
+
 import { dateConverter } from "../containers/date";
 // import parse from "html-react-parser";
 //.replace(/<(.|\n)*?>/g, "")
@@ -14,12 +14,12 @@ export default function TaskView(props) {
     const password = process.env.REACT_APP_PASSWORD;
     const userdata = btoa(`${login}:${password}`);
     const id = props.match.params.id;
-    const context = useContext(Context);
+    // const context = useContext(Context);
     const [task, setTask] = useState([]);
-    const Container = styled.div`
-        padding-top: 40px;
-        margin-left: ${context.state.sitebar ? "360px" : "330px"};
-    `;
+    // const Container = styled.div`
+    //     padding-top: 40px;
+    //     margin-left: ${context.state.sitebar ? "360px" : "330px"};
+    // `;
     useEffect(() => {
         getToken(userdata).then(res => {
             // const token = res.data.token.split(".");
@@ -57,9 +57,9 @@ export default function TaskView(props) {
         padding-top: 10px;
     `;
     return (
-        <Container>
+        <div className="container-fluid">
             <div className="row">
-                <div className="col-sm-8">
+                <div className="col-sm-9 mt-4">
                     <p>
                         <strong>Task id: </strong>
                         {task.id}
@@ -76,7 +76,7 @@ export default function TaskView(props) {
                         ) : null}
                     </Description>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-3 mt-4">
                     <div className="mb-4">
                         <Paragraph className="text-secondary mb-2">
                             STATUS:
@@ -156,6 +156,6 @@ export default function TaskView(props) {
                     ) : null}
                 </div>
             </div>
-        </Container>
+        </div>
     );
 }

@@ -1,18 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/logo.png";
 import logo2 from "../assets/images/logo_bpower.png";
 import "../assets/styles/Navbar.scss";
-import Context from "../context";
+// import Context from "../context";
 
 export default function Sidebar() {
-    const { dispatch } = useContext(Context);
+    // const { dispatch } = useContext(Context);
     const [active, setActive] = useState(false);
     // const [showText, setShowText] = useState(false);
 
     const burgerActive = () => {
-        dispatch({ type: "SITEBAR_ACTIVE", payload: !active });
+        // dispatch({ type: "SITEBAR_ACTIVE", payload: !active });
         setActive(!active);
     };
     const Sidebar = styled.div`

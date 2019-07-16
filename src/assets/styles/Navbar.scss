@@ -1,3 +1,5 @@
+@import "./Global.scss";
+
 .sidebar {
     position: fixed;
     width: 70px;
@@ -5,7 +7,7 @@
     z-index: 100;
     transition: all 0.1s linear;
     height: 100%;
-    background: #526465;
+    background: $greyBpower;
     padding: 0 5px;
     // overflow-y: auto;
     a {
@@ -52,13 +54,13 @@
                 align-items: center;
                 padding: 10px 0;
                 i {
-                    color: #b82324;
+                    color: $redBpower;
                 }
             }
             .sidebar-text {
                 p {
                     margin: 0;
-                    color: #b82324;
+                    color: $redBpower;
                 }
             }
         }
@@ -73,13 +75,13 @@
                 align-items: center;
                 padding: 10px 0;
                 i {
-                    color: #b82324;
+                    color: $redBpower;
                 }
             }
             .sidebar-text {
                 p {
                     margin: 0;
-                    color: #b82324;
+                    color: $redBpower;
                 }
             }
         }
@@ -88,7 +90,7 @@
 .sidebar-next {
     position: fixed;
     width: 5px;
-    background: #526465;
+    background: $greyBpower;
     width: 25px;
     left: 70px;
     height: 100%;
@@ -112,9 +114,10 @@
     }
 }
 .sidebar-wide {
-    background: #526465;
+    background: $greyBpower;
     transition: all 0.1s linear;
     width: 250px;
+    z-index: 100;
     i {
         left: 305px;
         transition: all 0.1s linear;
@@ -128,7 +131,7 @@
     }
 }
 .sidebar-narrow {
-    background: #526465;
+    background: $greyBpower;
     transition: all 0.1s linear;
     i {
         left: 75px;

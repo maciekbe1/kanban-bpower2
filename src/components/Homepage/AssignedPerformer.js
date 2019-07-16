@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../../containers/colors";
-import { getToken } from "../api";
-import axios from "axios";
+import { getTasks } from "../../components/api";
 
 export default function AssignedPerformer() {
     const Container = styled.div`
@@ -11,49 +10,28 @@ export default function AssignedPerformer() {
         -moz-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
     `;
-
-    const login = process.env.REACT_APP_LOGIN;
-    const password = process.env.REACT_APP_PASSWORD;
-    const userdata = btoa(`${login}:${password}`);
     const [tasks, setTasks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getToken(userdata).then(res => {
-            const token = res.data.token.split(".");
-            const userId = JSON.parse(atob(token[1]));
-            axios({
-                method: "get",
-                url: `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy":{"performer": ${
-                    userId.userId
-                }}}
-                `,
-                headers: {
-                    Authorization: res.data.token
-                }
-            })
-                .then(res => {
-                    let arrayTask = [];
-                    res.data.map(task => {
-                        if (task.status.name) {
-                            arrayTask.push(task);
-                        }
-                        return null;
-                    });
-                    setTasks(arrayTask);
-                    setIsLoading(false);
-                })
-                .catch(err => {
-                    console.log(err);
+        getTasks("performer")
+            .then(res => {
+                const filter = res.data.filter(val => {
+                    return val.status.name;
                 });
-        });
-    }, [userdata]);
+                setTasks(filter);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
     if (isLoading) {
         return <div>Loading...</div>;
     } else {
         return (
             <div className="row">
-                <div className="col-sm-4">
+                <div className="col-lg-6">
                     <div className="list-group" id="list-tab" role="tablist">
                         {tasks.map((item, index) => {
                             return (
@@ -84,7 +62,7 @@ export default function AssignedPerformer() {
                         })}
                     </div>
                 </div>
-                <div className="col-sm-6">
+                <div className="col-lg-4">
                     <Container
                         className="tab-content list-group-item"
                         id="nav-tabContent"

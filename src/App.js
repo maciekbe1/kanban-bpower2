@@ -2,6 +2,7 @@ import React, { useContext, useReducer } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Context from "./context";
 import reducer from "./reducer";
+import "./assets/styles/Global.scss";
 // import styled from "styled-components";
 import Homepage from "./pages/Homepage";
 import Kanban from "./pages/Kanban";
