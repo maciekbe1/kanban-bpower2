@@ -9,37 +9,48 @@ export default function Task(props) {
         }
         return null;
     });
+    const Priority = styled.div`
+        border-radius: 5px;
+        width: 50px;
+        height: 10px;
+        background: ${getColor};
+    `;
     const Container = styled.div`
-        border: 1px solid #fff;
-        border-radius: 2px;
+        border: 1px solid #a9a9a9;
+        border-radius: 5px;
         padding: 8px;
         margin-bottom: 8px;
         background: #fff;
-        border-left: 4px solid ${getColor};
-        -webkit-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
     `;
     const Title = styled.div`
         font-size: 16px;
         font-weight: bold;
     `;
     const Paragraph = styled.p`
-        font-size: 12px;
-        margin: 10px 0;
+        font-size: 15px;
+        margin: 0;
     `;
     return (
         <Container>
-            <Title>
-                <Link to={`/kanban/${props.task.id}`}>{props.task.name}</Link>
-            </Title>
-            <Paragraph>{props.task.priority.name}</Paragraph>
-            <Paragraph>
-                {props.task.user_id_createdby.f_name +
-                    " " +
-                    props.task.user_id_createdby.l_name}
-            </Paragraph>
-            <Paragraph className="text-secondary">{props.task.id}</Paragraph>
+            <div className="d-flex justify-content-between">
+                <Priority />
+                <Paragraph>{props.task.priority.name}</Paragraph>
+            </div>
+
+            <Title>{props.task.name}</Title>
+            <div className="d-flex mt-2 justify-content-between">
+                <Paragraph>
+                    {props.task.user_id_createdby.f_name +
+                        " " +
+                        props.task.user_id_createdby.l_name}
+                </Paragraph>
+                <Link className="task-link" to={`/kanban/${props.task.id}`}>
+                    <i className="fa fa-arrow-circle-right" />
+                </Link>
+            </div>
+
+            {/* 
+            <Paragraph className="text-secondary">{props.task.id}</Paragraph> */}
         </Container>
     );
 }

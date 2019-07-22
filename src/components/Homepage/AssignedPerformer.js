@@ -5,11 +5,11 @@ import { colors } from "../../containers/colors";
 import { getTasks } from "../../components/api";
 
 export default function AssignedPerformer() {
-    const Container = styled.div`
-        -webkit-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-    `;
+    // const Container = styled.div`
+    //     -webkit-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
+    //     -moz-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
+    //     box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
+    // `;
     const [tasks, setTasks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,6 +19,7 @@ export default function AssignedPerformer() {
                 const filter = res.data.filter(val => {
                     return val.status.name;
                 });
+                console.log(filter);
                 setTasks(filter);
                 setIsLoading(false);
             })
@@ -63,7 +64,7 @@ export default function AssignedPerformer() {
                     </div>
                 </div>
                 <div className="col-lg-4">
-                    <Container
+                    <div
                         className="tab-content list-group-item"
                         id="nav-tabContent"
                     >
@@ -126,7 +127,7 @@ export default function AssignedPerformer() {
                                 </Div>
                             );
                         })}
-                    </Container>
+                    </div>
                 </div>
             </div>
         );

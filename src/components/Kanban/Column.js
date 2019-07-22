@@ -3,13 +3,11 @@ import styled from "styled-components";
 import Task from "./Task";
 // import { Droppable } from "react-beautiful-dnd";
 const Container = styled.div`
-    margin: 15px;
     border: 1px solid #ccc;
     border-radius: 2px;
-    width: 12rem;
-    background: #f4f5f7;
+    background: #e3e4e6;
 `;
-const Title = styled.h3`
+const Title = styled.h5`
     padding: 8px;
 `;
 const TaskList = styled.div`

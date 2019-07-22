@@ -12,7 +12,7 @@ export default function Search() {
         const userId = JSON.parse(atob(token[1]));
         axios({
             method: "get",
-            url: `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy":{"name":"portal","performer":${
+            url: `https://qang.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy":{"performer":${
                 userId.userId
             },"user_id_createdby":${userId.userId}}}`,
             headers: {

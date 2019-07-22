@@ -59,7 +59,7 @@ export default function Kanban() {
                     </select>
                 </div>
             </div>
-            <div className="row">
+            <div className="column-wraper">
                 {columns.map((column, index) => {
                     return <Column key={index} column={column} tasks={tasks} />;
                 })}
