@@ -20,15 +20,15 @@ export const getTasks = async user => {
     const taskPerformer = getToken(userdata).then(res => {
         const token = res.data.token.split(".");
         const userId = JSON.parse(atob(token[1]));
-        const performer = `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy":{"performer": ${
+        const performer = `https://b2ng.bpower2.com/restApi/tasks/method/default/parameters/{"projectId":"default","searchBy":{"performer": ${
             userId.userId
         }}}
         `;
-        const creator = `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy":{"user_id_createdby": ${
+        const creator = `https://b2ng.bpower2.com/restApi/tasks/method/default/parameters/{"projectId":"default","searchBy":{"user_id_createdby": ${
             userId.userId
         }}}
         `;
-        const all = `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy": {"performer": ${
+        const all = `https://b2ng.bpower2.com/restApi/tasks/method/default/parameters/{"projectId":"default","searchBy": {"performer": ${
             userId.userId
         }, "user_id_createdby": ${userId.userId}}}
         `;
@@ -50,3 +50,26 @@ export const getTasks = async user => {
     });
     return await taskPerformer;
 };
+
+// export const getTasksByName = async text => {
+//     const login = process.env.REACT_APP_LOGIN;
+//     const password = process.env.REACT_APP_PASSWORD;
+//     const userdata = btoa(`${login}:${password}`);
+//     const task = getToken(userdata).then(res => {
+//         const token = res.data.token.split(".");
+//         const userId = JSON.parse(atob(token[1]));
+//         const result = axios({
+//             method: "get",
+//             url: `https://b2ng.bpower2.com/restApi/tasks/method/byName/parameters/{"projectId":"default","searchBy":{"performer": ${
+//                 userId.userId
+//             }, "name":"${text}"}}`,
+//             headers: {
+//                 Authorization: res.data.token
+//             }
+//         }).then(res => {
+//             return res;
+//         });
+//         return result;
+//     });
+//     return await task;
+// };

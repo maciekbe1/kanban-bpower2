@@ -32,10 +32,10 @@ export default function TaskView(props) {
                 }
             }).then(res => {
                 // console.log(res);
-                res.data.map(task => {
-                    setTask(task);
-                    return null;
+                const filter = res.data.byName.filter(task => {
+                    return task.id === id;
                 });
+                setTask(filter[0]);
             });
         });
     }, [userdata, id]);

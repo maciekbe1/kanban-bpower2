@@ -19,7 +19,7 @@ export default function Search() {
                 Authorization: res.data.token
             }
         }).then(res => {
-            console.log(res);
+            // console.log(res);
         });
     });
     return <div />;

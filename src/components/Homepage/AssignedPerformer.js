@@ -16,10 +16,10 @@ export default function AssignedPerformer() {
     useEffect(() => {
         getTasks("performer")
             .then(res => {
-                const filter = res.data.filter(val => {
+                // console.log(res);
+                const filter = res.data.default.filter(val => {
                     return val.status.name;
                 });
-                console.log(filter);
                 setTasks(filter);
                 setIsLoading(false);
             })

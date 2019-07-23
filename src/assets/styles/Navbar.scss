@@ -7,7 +7,7 @@
     z-index: 100;
     transition: all 0.1s linear;
     height: 100%;
-    background: $greyBpower;
+    background: #ddd;
     padding: 0 5px;
     // overflow-y: auto;
     a {
@@ -20,7 +20,7 @@
         .sidebar-icon {
             i {
                 font-size: 40px;
-                color: #fff;
+                color: $greyBpower;
                 transition: 0.1s;
             }
         }
@@ -90,12 +90,13 @@
 .sidebar-next {
     position: fixed;
     width: 5px;
-    background: $greyBpower;
+    background: #ddd;
     width: 25px;
+    top: 0;
     left: 70px;
     height: 100%;
     border-left: 2px solid #fff;
-    i {
+    .sitebar-burger {
         z-index: 100;
         color: #fff;
         position: fixed;
@@ -114,37 +115,70 @@
     }
 }
 .sidebar-wide {
-    background: $greyBpower;
+    background: #ddd;
     transition: all 0.1s linear;
     width: 250px;
     z-index: 100;
-    i {
+    padding: 10px;
+    .sitebar-burger {
         left: 305px;
         transition: all 0.1s linear;
     }
     .sidebar-next-container {
-        .sidebar-next-logo {
+        // .sidebar-next-logo {
+        //     width: 100%;
+        //     height: 80px;
+        //     transition: all 0.1s linear;
+        // }
+        .sidebar-next-search {
             width: 100%;
-            height: 80px;
-            transition: all 0.1s linear;
+            input {
+                padding-left: 5px;
+                border: none;
+                border-bottom: 2px solid $redBpower;
+                outline: none;
+                // height: 30px;
+            }
+            .sidebar-search-result {
+                border-radius: 5px;
+                border: 1px solid #a9a9a9;
+                display: inline-block;
+                width: 100%;
+                background: #fff;
+                padding: 5px;
+                margin: 3px 0;
+                color: #000;
+            }
         }
     }
 }
 .sidebar-narrow {
-    background: $greyBpower;
+    padding: 10px;
+    background: #ddd;
     transition: all 0.1s linear;
-    i {
+    .sitebar-burger {
         left: 75px;
         transition: all 0.1s linear;
     }
     .sidebar-next-container {
-        .sidebar-next-logo {
-            width: 0;
-            height: 80px;
-            transition: all 0.1s linear;
+        // .sidebar-next-logo {
+        //     width: 0;
+        //     height: 80px;
+        //     transition: all 0.1s linear;
+        // }
+        .sidebar-next-search {
+            width: 0%;
+            display: none;
         }
     }
 }
 .BurgerSlider:focus {
     outline: none;
+}
+.navigation {
+    margin-left: 95px;
+    // background: #ddd;
+    img {
+        width: 150px;
+    }
 }

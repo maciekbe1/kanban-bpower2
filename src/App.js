@@ -7,7 +7,7 @@ import "./assets/styles/Global.scss";
 import Homepage from "./pages/Homepage";
 import Kanban from "./pages/Kanban";
 import TaskView from "./pages/TaskView";
-
+import Navbar from "./components/Navbar";
 // import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 // import Footer from "./components/Footer";
@@ -17,6 +17,7 @@ function App() {
     return (
         <Context.Provider value={{ state, dispatch }}>
             <BrowserRouter>
+                <Navbar />
                 <Sidebar />
                 <Switch>
                     <Route

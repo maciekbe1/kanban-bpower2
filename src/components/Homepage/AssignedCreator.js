@@ -5,18 +5,13 @@ import { colors } from "../../containers/colors";
 import { getTasks } from "../api";
 
 export default function AssignedCreator() {
-    const Container = styled.div`
-        -webkit-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 18px 228px -42px rgba(0, 0, 0, 0.75);
-    `;
     const [tasks, setTasks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getTasks("creator")
             .then(res => {
-                const filter = res.data.filter(val => {
+                const filter = res.data.default.filter(val => {
                     return val.status.name;
                 });
                 setTasks(filter);
@@ -63,7 +58,7 @@ export default function AssignedCreator() {
                     </div>
                 </div>
                 <div className="col-lg-4">
-                    <Container
+                    <div
                         className="tab-content list-group-item"
                         id="nav-tabContent"
                     >
@@ -125,7 +120,7 @@ export default function AssignedCreator() {
                                 </Div>
                             );
                         })}
-                    </Container>
+                    </div>
                 </div>
             </div>
         );

@@ -12,7 +12,7 @@ export default function Kanban() {
     const user = ["Performer", "Creator", "All"];
     useEffect(() => {
         getTasks(userType).then(res => {
-            setTasks(res.data);
+            setTasks(res.data.default);
         });
     }, [userType]);
     const onItemSelect = e => {
@@ -36,7 +36,7 @@ export default function Kanban() {
                     className="btn btn-secondary my-4"
                     role="button"
                 >
-                    Bpower2
+                    Go to Bpower2
                 </a>
                 <div className="input-group my-4">
                     <div className="input-group-prepend">
