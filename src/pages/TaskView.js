@@ -40,26 +40,10 @@ export default function TaskView(props) {
         });
     }, [userdata, id]);
     // console.log(task.description);
-    const Status = styled.h3`
-        display: inline-block;
-        background: #e6e6e6;
-        color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.125);
-        padding: 5px;
-        border-radius: 5px;
-    `;
-    const Paragraph = styled.p`
-        margin: 0;
-    `;
-    const Description = styled.div`
-        margin: 20px 0;
-        border-top: 1px solid lightgrey;
-        padding-top: 10px;
-    `;
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-sm-9 mt-4">
+                <div className="col-sm-10 mt-4">
                     <p>
                         <strong>Task id: </strong>
                         {task.id}
@@ -76,7 +60,7 @@ export default function TaskView(props) {
                         ) : null}
                     </Description>
                 </div>
-                <div className="col-sm-3 mt-4">
+                <div className="col-sm-2 mt-4">
                     <div className="mb-4">
                         <Paragraph className="text-secondary mb-2">
                             STATUS:
@@ -159,3 +143,19 @@ export default function TaskView(props) {
         </div>
     );
 }
+const Status = styled.h3`
+    display: inline-block;
+    background: #e6e6e6;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 5px;
+    border-radius: 5px;
+`;
+const Paragraph = styled.p`
+    margin: 0;
+`;
+const Description = styled.div`
+    margin: 20px 0;
+    border-top: 1px solid lightgrey;
+    padding-top: 10px;
+`;

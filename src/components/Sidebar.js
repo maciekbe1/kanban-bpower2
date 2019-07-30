@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/images/logo.png";
 import { getTasks } from "../components/api";
-import Context from "../context";
+// import Context from "../context";
 // import logo2 from "../assets/images/logo_bpower.png";
 import "../assets/styles/Navbar.scss";
 // import Context from "../context";
@@ -26,25 +26,14 @@ export default function Sidebar() {
     const Img = styled.img`
         height: 60px;
     `;
-    const searchTask = () => {
-        // getTasksByName(search).then(res => {
-        //     // setTasks(res);
-        //     // console.log(res);
-        //     const filter = res.data.byName.filter(val => {
-        //         return context.state.columns.filter(colName => {
-        //             return val.status.name === colName.name;
-        //         });
-        //     });
-        //     setTasks(filter);
-        //     console.log(filter);
-        // });
+    useEffect(() => {
         getTasks("all").then(res => {
             const filter = res.data.default.filter(task => {
                 return task.name.toLowerCase().includes(search);
             });
             setTasks(filter);
         });
-    };
+    }, [search])
     return (
         <div>
             <Sidebar className="sidebar">
@@ -75,7 +64,7 @@ export default function Sidebar() {
                     exact={true}
                     className=""
                     activeClassName="active"
-                    to="/kanban"
+                    to="/tasks-review"
                 >
                     <div className="sidebar-link">
                         <div className="sidebar-box">
@@ -119,15 +108,13 @@ export default function Sidebar() {
                         <div />
                         <div className="d-flex btn-group">
                             <input
+                                className="w-100"
                                 type="text"
                                 onChange={e => setSearch(e.target.value)}
                                 value={search}
                             />
                             <button
-                                type="button"
                                 className="btn btn-secondary"
-                                onClick={searchTask}
-                                disabled={!search}
                             >
                                 <i className="fa fa-search" />
                             </button>

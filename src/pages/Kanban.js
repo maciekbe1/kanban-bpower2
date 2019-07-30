@@ -8,7 +8,7 @@ export default function Kanban() {
     const context = useContext(Context);
     const columns = context.state.columns;
     const [tasks, setTasks] = useState([]);
-    const [userType, setUserType] = useState("performer");
+    const [userType, setUserType] = useState("Performer");
     const user = ["Performer", "Creator", "All"];
     useEffect(() => {
         getTasks(userType).then(res => {
@@ -61,7 +61,14 @@ export default function Kanban() {
             </div>
             <div className="column-wraper">
                 {columns.map((column, index) => {
-                    return <Column key={index} column={column} tasks={tasks} />;
+                    return (
+                        <Column
+                            userType={userType}
+                            key={index}
+                            column={column}
+                            tasks={tasks}
+                        />
+                    );
                 })}
             </div>
         </div>

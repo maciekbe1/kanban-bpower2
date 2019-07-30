@@ -4,7 +4,7 @@ import Context from "./context";
 import reducer from "./reducer";
 import "./assets/styles/Global.scss";
 // import styled from "styled-components";
-import Homepage from "./pages/Homepage";
+import Review from "./pages/Review";
 import Kanban from "./pages/Kanban";
 import TaskView from "./pages/TaskView";
 import Navbar from "./components/Navbar";
@@ -23,10 +23,11 @@ function App() {
                     <Route
                         path="/"
                         exact
-                        render={render => <Homepage {...render} />}
+                        render={render => <Kanban {...render} />}
                     />
+                    <Route path="/tasks-review" component={Review} />
                     <Route path="/kanban/:id" component={TaskView} />
-                    <Route path="/kanban" component={Kanban} />
+                    
                 </Switch>
                 {/* <Footer /> */}
             </BrowserRouter>

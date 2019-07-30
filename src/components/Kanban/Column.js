@@ -21,7 +21,12 @@ export default function Column(props) {
             <TaskList>
                 {props.tasks.map((task, index) => {
                     return props.column.name === task.status.name ? (
-                        <Task index={index} key={index} task={task} />
+                        <Task
+                            userType={props.userType}
+                            index={index}
+                            key={index}
+                            task={task}
+                        />
                     ) : null;
                 })}
             </TaskList>
